@@ -9,10 +9,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './products/product-list.component';
 import { FormsModule } from '@angular/forms';
+import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
+
 
 @NgModule({
   imports:      [ BrowserModule,FontAwesomeModule,FormsModule ],
-  declarations: [ AppComponent,ProductListComponent ],
+  declarations: [ AppComponent,ProductListComponent,ConvertToSpacesPipe ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
