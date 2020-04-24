@@ -17,7 +17,7 @@ products: any = [
     "description": "Leaf rake with 48-inch wooden handle.",
     "price": 19.95,
     "starRating": 3.2,
-    "imageUrl": "https://cdn.jsdelivr.net/gh/Saravanasakthivel/Angular-sample@dev/src/assets/images/leaf-rake.png"
+    "imageUrl":"https://cdn.jsdelivr.net/gh/Saravanasakthivel/Angular-sample@dev/src/assets/images/leaf-rake1.png"
   },
   {
     "productId": 2,
