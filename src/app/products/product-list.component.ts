@@ -43,7 +43,9 @@ constructor(){
   this.filteredProducts=this.products;
   this.listFilter='cart';
 }
-
+onRatingClicked(message:string):void{
+     this.pageTitle='Product List:' + message;
+}
 
 _listFilter : string;
   get listFilter(): string {
