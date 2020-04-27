@@ -3,6 +3,6 @@ import { Component } from '@angular/core';
 @Component({
   templateUrl: './welcome.component.html'
 })
-export class WelcomeCo {
+export class WelcomeComponent {
   public pageTitle = 'Welcome';
 }

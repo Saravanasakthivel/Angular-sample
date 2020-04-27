@@ -1,34 +1,27 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { library } from '@fortawesome/fontawesome-svg-core';
-//import { faStar} from '@fortawesome/free-solid-svg-icons';
-//library.add(faStar);
-
-import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
-
-library.add(fasStar);
-
-
-
-
-
-
-
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { ProductListComponent } from './products/product-list.component';
-import { FormsModule } from '@angular/forms';
-import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
-import { StarComponent } from './shared/star-component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { HttpClientModule } from '@angular/common/http';
-import { ProductDetailComponent } from './products/product-detail.component';
-
-
+import { WelcomeComponent } from './home/welcome.component';
+import { ProductModule } from './products/product.module';
 
 @NgModule({
-  imports:      [ BrowserModule,FormsModule,FontAwesomeModule,HttpClientModule ],
-  declarations: [ AppComponent,ProductListComponent,ConvertToSpacesPipe,StarComponent,ProductDetailComponent ],
-  bootstrap:    [ AppComponent ]
+  declarations: [
+    AppComponent,
+    WelcomeComponent
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    RouterModule.forRoot([
+      { path: 'welcome', component: WelcomeComponent },
+      { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+      { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
+    ]),
+    ProductModule
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
