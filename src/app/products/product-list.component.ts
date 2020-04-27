@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from './product';
 import productListComponentCss from './product-list.component.css';
+import { ProductService } from './product.service';
 
 
 @Component({
@@ -14,34 +15,11 @@ pageTitle:string = 'Product List';
 imageWidth = 80;
 imageMargin = 2;
 showImage : boolean = false;
+errorMessage:string;
 
   filteredProducts: IProduct[] ;
-products: IProduct[]= [
-  {
-    "productId": 1,
-    "productName": "Leaf Rake",
-    "productCode": "GDN-0011",
-    "releaseDate": "March 19, 2019",
-    "description": "Leaf rake with 48-inch wooden handle.",
-    "price": 19.95,
-    "starRating": 3.2,
-    "imageUrl":"https://cdn.jsdelivr.net/gh/Saravanasakthivel/Angular-sample@dev/src/assets/images/leaf-rake1.png"
-  },
-  {
-    "productId": 2,
-    "productName": "Garden Cart",
-    "productCode": "GDN-0023",
-    "releaseDate": "March 18, 2019",
-    "description": "15 gallon capacity rolling garden cart",
-    "price": 32.99,
-    "starRating": 4.2,
-    "imageUrl": "https://cdn.jsdelivr.net/gh/Saravanasakthivel/Angular-sample@dev/src/assets/images/garden-cart.png"
-  }
-  
-]
-constructor(){
-  this.filteredProducts=this.products;
-  this.listFilter='cart';
+products: IProduct[]= [];
+constructor(private productService:ProductService){
 }
 onRatingClicked(message:string):void{
      this.pageTitle='Product List:' + message;
@@ -67,6 +45,12 @@ toggleImage(): void {
   this.showImage=!this.showImage;
 }
 ngOnInit() : void {
-  console.log("In OnInit");
-}
+  this.productService.getProducts().subscribe({
+      next: products => {
+        this.products = products;
+        this.filteredProducts = this.products;
+      },
+      error: err => this.errorMessage = err
+    });
+ }
 }
